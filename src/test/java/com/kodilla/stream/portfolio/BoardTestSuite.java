@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -152,7 +153,8 @@ public class BoardTestSuite {
         double sum=project.getTaskLists().stream()
                 .filter(averageInProgress::contains)
                 .flatMap(t1->t1.getTasks().stream())
-                .mapToDouble(d->LocalDate.now().getDayOfYear()-(d.getCreated().getDayOfYear()))
+                .mapToDouble(d-> ChronoUnit.DAYS.between(d.getCreated(),LocalDate.now()))
+               // .mapToDouble(d->LocalDate.now().getDayOfYear()-(d.getCreated().getDayOfYear()))
                 .sum();
 
         long elements=project.getTaskLists().stream()
