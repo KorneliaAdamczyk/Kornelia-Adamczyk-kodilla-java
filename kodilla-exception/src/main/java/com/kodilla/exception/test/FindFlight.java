@@ -12,10 +12,8 @@ class FindFlights {
         flightExist.put("Nowy Jork", false);
         flightExist.put("Tokio", false);
 
-        if (flightExist.containsKey(flight.getArrivalAirport()) & flightExist.get(flight.getArrivalAirport()) == true) {
+        if (flightExist.containsKey(flight.getArrivalAirport()) && flightExist.get(flight.getArrivalAirport()) == true) {
             System.out.println("Flight to " + flight.getArrivalAirport() + " is possible.");
-        } else if (flightExist.containsKey(flight.getArrivalAirport()) & flightExist.get(flight.getArrivalAirport()) == false) {
-            System.out.println("Flight to " + flight.getArrivalAirport() + " isn't possible.");
         } else {
             throw new RouteNotFoundException("Wrong data");
         }

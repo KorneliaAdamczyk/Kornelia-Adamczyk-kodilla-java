@@ -6,7 +6,7 @@ class RouteNotFoundExceptionRunner{
         FindFlights findFlights = new FindFlights();
 
         try {
-            Flight flight = new Flight ("Malaga", "Oslo");
+            Flight flight = new Flight ("Malaga", "Tokio");
             findFlights.findFlight(flight);
         }
         catch (RouteNotFoundException e) {
