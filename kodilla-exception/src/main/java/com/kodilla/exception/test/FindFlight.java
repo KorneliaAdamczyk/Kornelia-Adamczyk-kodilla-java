@@ -1,47 +1,25 @@
 package com.kodilla.exception.test;
 
 import java.util.HashMap;
-import java.util.Map;
 
 class FindFlights {
 
-    String departureAirport;
-    Boolean isExist;
+    HashMap<String, Boolean> flightExist = new HashMap<>();
 
-    public Map <String, Boolean> findFlight(Flight flight)throws RouteNotFoundException {
-
-        HashMap<String, Boolean> flightExist = new HashMap<>();
-
+    public void findFlight(Flight flight) throws RouteNotFoundException {
         flightExist.put("Malaga", true);
         flightExist.put("Paryż", true);
         flightExist.put("Nowy Jork", false);
         flightExist.put("Tokio", false);
 
-        if (flightExist.get(isExist)==true) {
-            System.out.println("Flight to " + flightExist.get(departureAirport) + " is possible.");
+        if (flightExist.containsKey(flight.getArrivalAirport()) & flightExist.get(flight.getArrivalAirport()) == true) {
+            System.out.println("Flight to " + flight.getArrivalAirport() + " is possible.");
+        } else if (flightExist.containsKey(flight.getArrivalAirport()) & flightExist.get(flight.getArrivalAirport()) == false) {
+            System.out.println("Flight to " + flight.getArrivalAirport() + " isn't possible.");
         } else {
-            System.out.println("Flight to " + flightExist.get(departureAirport) + " isn't possible.");
+            throw new RouteNotFoundException("Wrong data");
         }
-        try {
-            flightExist.get(departureAirport).equals(null);
-
-        } catch (NullPointerException e) {
-            throw new RouteNotFoundException("Object User was null");
-        } finally {
-            System.out.println("Finally");
-        }
-        return flightExist;
     }
-            public static void main(String[] args) throws RouteNotFoundException {
-
-            Flight flight = new Flight ("Malaga", "Paryż");
-
-            FindFlights findFlights = new FindFlights();
-
-            findFlights.findFlight(flight);
-            }
-
-
-    }
+}
 
 
