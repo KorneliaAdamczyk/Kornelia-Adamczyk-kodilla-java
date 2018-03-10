@@ -2,19 +2,25 @@ package com.kodilla.good.patterns.challenges;
 
 public class Product {
 
-    private String ProductName;
-    private String ProductDescription;
+    private String productName;
+    private String productDescription;
+    private int quantity;
 
-    public Product(String productName, String productDescription) {
-        ProductName = productName;
-        ProductDescription = productDescription;
+    public Product(String productName, String productDescription, int quantity) {
+        this.productName = productName;
+        this.productDescription = productDescription;
+        this.quantity = quantity;
     }
 
     public String getProductName() {
-        return ProductName;
+        return productName;
     }
 
     public String getProductDescription() {
-        return ProductDescription;
+        return productDescription;
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 }

@@ -23,4 +23,13 @@ public class User {
     public String getMail() {
         return Mail;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "Name='" + Name + '\'' +
+                ", Surname='" + Surname + '\'' +
+                ", Mail='" + Mail + '\'' +
+                '}';
+    }
 }
