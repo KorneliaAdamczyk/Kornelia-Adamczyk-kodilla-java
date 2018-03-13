@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges.food2Door;
+package com.kodilla.good.patterns.challenges.food2Door2;
 
 public class Order {
 
