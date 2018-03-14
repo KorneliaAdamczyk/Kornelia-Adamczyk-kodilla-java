@@ -6,6 +6,8 @@ public class Application {
 
         OrderRetriever orderRetriever = new OrderRetriever();
         Order order1=orderRetriever.retriever ("Carrot",10);
+        SupplierSelection supplierSelection=new SupplierSelection();
+        supplierSelection.choiceSupplier(supplierSelection.allProducts(extraFoodShop.extraFoodShopProducts(),order1)));
         ExtraFoodShop extraFoodShop=new ExtraFoodShop();
         extraFoodShop.process();
         GlutenFreeShop glutenFreeShop=new GlutenFreeShop();

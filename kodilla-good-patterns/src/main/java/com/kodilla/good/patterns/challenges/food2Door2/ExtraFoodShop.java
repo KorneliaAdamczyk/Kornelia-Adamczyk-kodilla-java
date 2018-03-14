@@ -13,9 +13,9 @@ public class ExtraFoodShop extends OrderProcess{
     public Map<SupplierProduct, Integer> getExtraFoodShopProducts() {
 
         Map<SupplierProduct, Integer>extraFoodShopProducts=new HashMap<>();
-        extraFoodShopProducts.put(new SupplierProduct(getSupplierName(),"Carrot"), 200);
-        extraFoodShopProducts.put(new SupplierProduct(getSupplierName(),"Apple"), 150);
-        extraFoodShopProducts.put(new SupplierProduct(getSupplierName(),"Onion"), 370);
+        extraFoodShopProducts.put(new SupplierProduct("Carrot",getSupplierName()), 200);
+        extraFoodShopProducts.put(new SupplierProduct("Apple",getSupplierName()), 150);
+        extraFoodShopProducts.put(new SupplierProduct("Onion",getSupplierName()), 370);
         return extraFoodShopProducts;
     }
 

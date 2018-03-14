@@ -22,7 +22,7 @@ public class SupplierSelection {
         return allProducts;
     }
 
-public static String choiceSupplier( Map<SupplierProduct, Integer> allProducts, Order order1) {
+public String choiceSupplier( Map<SupplierProduct, Integer> allProducts, Order order1) {
 
     for (Map.Entry<SupplierProduct, Integer> entry : allProducts.entrySet()) {
 
