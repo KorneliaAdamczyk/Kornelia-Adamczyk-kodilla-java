@@ -1,10 +1,8 @@
 package com.kodilla.good.patterns.challenges.FlightSearch;
 
-import java.math.BigInteger;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import static java.math.BigInteger.*;
 
 public class FlightSearch {
 
@@ -24,20 +22,22 @@ public class FlightSearch {
 
         System.out.println("Flights from Wrocław:" + '\n' + flightFrom + '\n');
 
-        boolean indirectFlight1 = availableFlight.getFlight().stream()
-                .filter(flight -> flight.getDepartureAirport().contains("Gdańsk"))
-                .anyMatch(flight -> flight.getArrivalAirport().contains("Kraków"));
+        Map<String, String> flightFromTo1 = availableFlight.getFlight().stream()
+                .filter(flight -> flight.getDepartureAirport().contains("Wrocław"))
+                .filter(flight->!(flight.getArrivalAirport().contains("Kraków")))
+                .collect(Collectors.toMap(Flight::getArrivalAirport,Flight::getDepartureAirport));
 
+        Map<String, String> flightFromTo2 = availableFlight.getFlight().stream()
+                .filter(flight -> flight.getArrivalAirport().contains("Kraków"))
+                .filter(flight->!(flight.getDepartureAirport().contains("Wrocław")))
+                .collect(Collectors.toMap(Flight::getDepartureAirport,Flight::getArrivalAirport));
 
-        boolean indirectFlight2 = availableFlight.getFlight().stream()
-                .filter(flight -> flight.getDepartureAirport().contains("Kraków"))
-                .anyMatch(flight -> flight.getArrivalAirport().contains("Warszawa"));
-
-
-        if (indirectFlight1 == true && indirectFlight2 == true) {
-            System.out.println("Flights from Wrocław through Kraków to Warszawa is available.");
-        } else {
-            System.out.println("Flights from Wrocław through Kraków to Warszawa isn't available.");
+        for (Map.Entry<String, String> entry1 : flightFromTo1.entrySet()) {
+            for (Map.Entry<String, String> entry2 : flightFromTo2.entrySet()){
+        if (entry1.getKey().equals(entry2.getKey())) {
+            System.out.println("Flight from Wrocław to Kraków is possible through " + entry1.getKey() + "." );
+        }
         }
     }
 }
+    }

@@ -10,7 +10,7 @@ public class SupplierSelection {
 
        Map<SupplierProduct, Integer> allProducts = new HashMap<>();
 
-       for (Map.Entry<SupplierProduct, Integer> entry : extraFoodShopProducts.entrySet()) {
+        for (Map.Entry<SupplierProduct, Integer> entry : extraFoodShopProducts.entrySet()) {
            allProducts.put(entry.getKey(), entry.getValue());
        }
         for (Map.Entry<SupplierProduct, Integer> entry1 : healthyShopProducts.entrySet()) {
