@@ -5,34 +5,26 @@ import java.util.stream.Collectors;
 
 public class FlightToOrFrom {
 
-    String fromCity;
-    String toCity;
-
-    public FlightToOrFrom( String fromCity, String toCity) {
-        this.fromCity = fromCity;
-        this.toCity = toCity;
-    }
-
-    public void flightToCity() {
+    public void flightToCity(String arrivalAirport) {
 
         AvailableFlight availableFlight = new AvailableFlight();
 
         Set<Flight> flightTo = availableFlight.getFlight().stream()
-                .filter(flights -> flights.getArrivalAirport().contains(toCity))
+                .filter(flights -> flights.getArrivalAirport().contains(arrivalAirport))
                 .collect(Collectors.toSet());
 
-        System.out.println("Flights to " + toCity + ":" + '\n' + flightTo + '\n');
+        System.out.println("Flights to " + arrivalAirport + ":" + '\n' + flightTo + '\n');
 
     }
 
-    public void flightFromCity() {
+    public void flightFromCity(String departureAirport) {
 
         AvailableFlight availableFlight = new AvailableFlight();
 
         Set<Flight> flightFrom = availableFlight.getFlight().stream()
-                .filter(flights -> flights.getDepartureAirport().contains(fromCity))
+                .filter(flights -> flights.getDepartureAirport().contains(departureAirport))
                 .collect(Collectors.toSet());
 
-        System.out.println("Flights from " + fromCity + ":" + '\n' + flightFrom + '\n');
+        System.out.println("Flights from " + departureAirport + ":" + '\n' + flightFrom + '\n');
     }
 }

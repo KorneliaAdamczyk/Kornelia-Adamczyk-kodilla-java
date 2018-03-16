@@ -4,12 +4,12 @@ public class FlightSearch {
 
     public static void main(String[] args) {
 
-        FlightToOrFrom flightToOrFrom = new FlightToOrFrom("Wrocław", "Warszawa");
-        flightToOrFrom.flightToCity();
-        flightToOrFrom.flightFromCity();
+        FlightToOrFrom flightToOrFrom = new FlightToOrFrom();
+        flightToOrFrom.flightToCity("Warszawa");
+        flightToOrFrom.flightFromCity("Wrocław");
 
 
-     IndirectFlight indirectFlight = new IndirectFlight("Gdańsk", "Kraków");
-     indirectFlight.flightThrough();
+     IndirectFlight indirectFlight = new IndirectFlight();
+     indirectFlight.flightThrough("Gdańsk", "Kraków");
     }
 }
