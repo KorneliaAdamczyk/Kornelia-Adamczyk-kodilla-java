@@ -6,7 +6,16 @@ import java.util.Map;
 
 public class SupplierSelection {
 
-    public Map<SupplierProduct, Integer> allProducts(HashMap<SupplierProduct, Integer> extraFoodShopProducts, HashMap<SupplierProduct, Integer> healthyShopProducts, HashMap<SupplierProduct, Integer> glutenFreeProducts) {
+    private Map<SupplierProduct, Integer> allProducts;
+
+    public SupplierSelection() {
+        ExtraFoodShop extraFoodShop=new ExtraFoodShop();
+        HealthyShop healthyShop=new HealthyShop();
+        GlutenFreeShop glutenFreeShop=new GlutenFreeShop();
+        this.allProducts=allProducts(extraFoodShop.getExtraFoodShopProducts(),healthyShop.getHealthyShopProducts(),glutenFreeShop.getGlutenShopProducts());
+    }
+
+    public Map<SupplierProduct, Integer> allProducts(Map<SupplierProduct, Integer> extraFoodShopProducts, Map<SupplierProduct, Integer> healthyShopProducts, Map<SupplierProduct, Integer> glutenFreeProducts) {
 
        Map<SupplierProduct, Integer> allProducts = new HashMap<>();
 
@@ -22,15 +31,14 @@ public class SupplierSelection {
         return allProducts;
     }
 
-public String choiceSupplier( Map<SupplierProduct, Integer> allProducts, Order order1) {
+public OrderProcess choiceSupplier( Order order1) {
 
     for (Map.Entry<SupplierProduct, Integer> entry : allProducts.entrySet()) {
 
-        if (entry.getKey().getNameProduct().equals(order1) && allProducts.get(order1) > order1.getQuantity()) {
+        if (entry.getKey().getNameProduct().equals(order1.getNameProduct())) {
             return entry.getKey().getNameSupplier();
         }
     }
-    return "Supplier";
-
+    return null;
 }
 }
