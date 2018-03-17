@@ -9,7 +9,6 @@ public class Order {
         this.nameProduct = nameProduct;
         this.quantity = quantity;
     }
-
     public String getNameProduct() {
         return nameProduct;
     }

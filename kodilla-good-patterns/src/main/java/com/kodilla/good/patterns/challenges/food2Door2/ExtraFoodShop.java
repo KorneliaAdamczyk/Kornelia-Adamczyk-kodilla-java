@@ -1,7 +1,7 @@
 package com.kodilla.good.patterns.challenges.food2Door2;
 
+import java.time.LocalDate;
 import java.time.Period;
-import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,10 +21,10 @@ public class ExtraFoodShop extends OrderProcess{
 
     protected void inform(){
 
-        ZonedDateTime deliveryDate;
-        deliveryDate = ZonedDateTime.now().plus(Period.ofDays(3));
+        LocalDate deliveryDate;
+        deliveryDate = LocalDate.now().plus(Period.ofDays(3));
 
-        System.out.println("Delivery date order is expected for "+ deliveryDate);
+        System.out.println("The order will prepare " + getSupplierName() + "." + '\n' + "Delivery date order is expected for "+ deliveryDate+".");
     }
 
 }
