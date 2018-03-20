@@ -15,17 +15,22 @@ public class BoardTestSuite {
 
     @Test
     public void testTaskAdd (){
+
         //Given
         ApplicationContext context =
                 new AnnotationConfigApplicationContext("com.kodilla.spring");
         Board board = context.getBean(Board.class);
 
-
         //When
-        board.getBoard();
+        boolean toDoListExists = context.containsBean("toDoList");
+        boolean inProgressListExists = context.containsBean("inProgressList");
+        boolean doneListExists = context.containsBean("doneList");
 
         //Then
-        Assert.assertEquals(new Board(new TaskList(),new TaskList(),new TaskList()),board.getBoard());
+        System.out.println("Bean toDoList was found in the container: " + toDoListExists);
+        System.out.println("Bean inProgressList was found in the container: " + inProgressListExists);
+        System.out.println("Bean doneList was found in the container: " + doneListExists);
 
     }
+
 }
