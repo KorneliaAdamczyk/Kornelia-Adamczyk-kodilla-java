@@ -27,9 +27,9 @@ public class BoardTestSuite {
         boolean doneListExists = context.containsBean("doneList");
 
         //Then
-        System.out.println("Bean toDoList was found in the container: " + toDoListExists);
-        System.out.println("Bean inProgressList was found in the container: " + inProgressListExists);
-        System.out.println("Bean doneList was found in the container: " + doneListExists);
+        Assert.assertTrue(toDoListExists);
+        Assert.assertTrue(inProgressListExists);
+        Assert.assertTrue(doneListExists);
 
     }
 
