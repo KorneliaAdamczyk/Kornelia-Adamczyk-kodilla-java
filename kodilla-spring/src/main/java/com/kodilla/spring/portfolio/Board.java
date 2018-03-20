@@ -12,4 +12,7 @@ public class Board {
         this.doneList = doneList;
     }
 
+    public Board getBoard(){
+        return new Board(toDoList, inProgressList, doneList);
+    }
 }

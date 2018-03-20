@@ -9,4 +9,8 @@ public class TaskList {
     public TaskList() {
         tasks = new ArrayList<>();
     }
+
+    public void add(String zadanie) {
+        tasks.add(" ");
+    }
 }
