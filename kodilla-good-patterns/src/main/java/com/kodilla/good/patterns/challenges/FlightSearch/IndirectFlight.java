@@ -19,12 +19,18 @@ public class IndirectFlight {
                 .filter(flight -> !(flight.getDepartureAirport().contains(departureAirport)))
                 .collect(Collectors.toMap(Flight::getDepartureAirport, Flight::getArrivalAirport));
 
+        boolean find = false;
+
         for (Map.Entry<String, String> entry1 : flightFromTo1.entrySet()) {
             for (Map.Entry<String, String> entry2 : flightFromTo2.entrySet()) {
                 if (entry1.getKey().equals(entry2.getKey())) {
+                    find = true;
                     System.out.println("Flight from " + departureAirport + " to " + arrivalAirport + " is possible through " + entry1.getKey() + ".");
-                }
                 }
             }
         }
+        if (!find){
+            System.out.println("This flight is not exist");
+        }
     }
+}
