@@ -15,7 +15,7 @@ public class PaintingTask implements Task{
         this.whatToPaint = whatToPaint;
     }
 
-    Boolean done = false;
+    private boolean done = false;
 
     @Override
     public void executeTask() {

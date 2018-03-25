@@ -15,7 +15,7 @@ public class ShoppingTask implements Task{
         this.quantity = quantity;
     }
 
-    Boolean done = false;
+    private boolean done = false;
 
     @Override
     public void executeTask() {
