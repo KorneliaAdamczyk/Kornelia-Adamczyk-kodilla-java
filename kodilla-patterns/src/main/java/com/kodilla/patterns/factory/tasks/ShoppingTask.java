@@ -5,9 +5,9 @@ import java.util.Map;
 
 public class ShoppingTask implements Task{
 
-    String taskName;
-    String whatToBuy;
-    double quantity;
+    private String taskName;
+    private String whatToBuy;
+    private double quantity;
 
     public ShoppingTask(String taskName, String whatToBuy, double quantity) {
         this.taskName = taskName;
@@ -18,9 +18,8 @@ public class ShoppingTask implements Task{
     Boolean done = false;
 
     @Override
-    public Boolean executeTask() {
+    public void executeTask() {
         done = true;
-        return done;
     }
 
     @Override
@@ -29,10 +28,8 @@ public class ShoppingTask implements Task{
     }
 
     @Override
-    public Map<String, Boolean> isTaskExecuted() {
-        Map<String, Boolean> isDone = new HashMap<>();
-        isDone.put(getTaskName(),executeTask());
-        return isDone;
+    public boolean isTaskExecuted() {
+        return done;
     }
 
 }

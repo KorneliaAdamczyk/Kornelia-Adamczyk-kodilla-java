@@ -7,10 +7,10 @@ public final class TaskFactory {
 
     public final Task makeTask (final String taskClass){
         switch (taskClass) {
-            case SHOPPINGTASK:
-                return new ShoppingTask("To buy fruits", "pineapple, apples, bananas", 2.5);
             case PAINTINGTASK:
-                return new PaintingTask("Painting kitchen","gray", "wall in kitchen");
+                return new PaintingTask("Painting kitchen", "grey", "wall in the kitchen");
+            case SHOPPINGTASK:
+                return new ShoppingTask("To buy fruits","pineapple, apples, bananas", 2.5);
             case DRIVINGTASK:
                 return new DrivingTask("To drive Grandpa","home","by car");
             default:

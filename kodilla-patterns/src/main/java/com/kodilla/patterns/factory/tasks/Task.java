@@ -4,8 +4,8 @@ import java.util.Map;
 
 public interface Task {
 
-    Boolean executeTask();
+    void executeTask();
     String getTaskName();
-    Map<String, Boolean> isTaskExecuted();
+    boolean isTaskExecuted();
 
 }

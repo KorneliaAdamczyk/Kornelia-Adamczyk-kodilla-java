@@ -7,9 +7,9 @@ import java.util.Map;
 
 public class DrivingTask implements Task {
 
-    String taskName;
-    String where;
-    String using;
+    private String taskName;
+    private String where;
+    private String using;
 
     public DrivingTask(String taskName, String where, String using) {
         this.taskName = taskName;
@@ -17,12 +17,11 @@ public class DrivingTask implements Task {
         this.using = using;
     }
 
-    Boolean done = false;
+    boolean done = false;
 
     @Override
-    public Boolean executeTask() {
+    public void executeTask() {
         done = true;
-        return done;
     }
 
     @Override
@@ -31,9 +30,8 @@ public class DrivingTask implements Task {
     }
 
     @Override
-    public Map<String, Boolean> isTaskExecuted() {
-        Map<String, Boolean> isDone = new HashMap<>();
-        return isDone;
+    public boolean isTaskExecuted() {
+        return done;
     }
 
 }

@@ -5,9 +5,9 @@ import java.util.Map;
 
 public class PaintingTask implements Task{
 
-    String taskName;
-    String color;
-    String whatToPaint;
+    private String taskName;
+    private String color;
+    private String whatToPaint;
 
     public PaintingTask(String taskName, String color, String whatToPaint) {
         this.taskName = taskName;
@@ -18,9 +18,8 @@ public class PaintingTask implements Task{
     Boolean done = false;
 
     @Override
-    public Boolean executeTask() {
+    public void executeTask() {
         done = true;
-        return done;
     }
 
     @Override
@@ -29,9 +28,8 @@ public class PaintingTask implements Task{
     }
 
     @Override
-    public Map<String, Boolean> isTaskExecuted() {
-        Map<String, Boolean> isDone = new HashMap<>();
-        return isDone;
+    public boolean isTaskExecuted() {
+        return done;
     }
 
 }
