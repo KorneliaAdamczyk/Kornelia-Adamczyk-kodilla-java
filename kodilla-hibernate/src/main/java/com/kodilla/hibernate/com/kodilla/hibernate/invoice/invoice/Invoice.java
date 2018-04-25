@@ -3,6 +3,7 @@ package com.kodilla.hibernate.com.kodilla.hibernate.invoice.invoice;
 import com.kodilla.hibernate.com.kodilla.hibernate.invoice.item.Item;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -11,7 +12,7 @@ public final class Invoice {
 
     private int id;
     private String number;
-    private List<Item> item;
+    private List<Item> item = new ArrayList<>();
 
     public Invoice(){
     }

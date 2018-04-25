@@ -4,6 +4,7 @@ import com.kodilla.hibernate.com.kodilla.hibernate.invoice.item.Item;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -11,7 +12,7 @@ import java.util.List;
 public final class Product {
     private int id;
     private String name;
-    private List<Item> items;
+    private List<Item> items = new ArrayList<>();
 
     public Product(){
     }
@@ -51,7 +52,7 @@ public final class Product {
         this.name = name;
     }
 
-    public void setItem(List<Item> items) {
+    public void setItems(List<Item> items) {
         this.items = items;
     }
 }
