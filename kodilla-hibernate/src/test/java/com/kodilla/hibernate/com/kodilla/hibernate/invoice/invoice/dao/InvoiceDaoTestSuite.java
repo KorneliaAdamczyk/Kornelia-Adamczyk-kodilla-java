@@ -57,16 +57,16 @@ public class InvoiceDaoTestSuite {
         item4.setInvoice(invoice);
 
         //When
-        invoiceDao.save(invoice);
-        int id = invoice.getId();
+        Invoice saved = invoiceDao.save(invoice);
         Iterable<Invoice> readInvoiceList = invoiceDao.findAll();
 
         //Then
         Assert.assertNotNull(readInvoiceList);
-        Assert.assertEquals(1,id);
-
+        Assert.assertEquals("20180410",saved.getNumber());
+        Assert.assertEquals(4,saved.getItem().size());
+        
         //CleanUp
-        invoiceDao.delete(id);
+        invoiceDao.delete(saved.getId());
     }
 
 

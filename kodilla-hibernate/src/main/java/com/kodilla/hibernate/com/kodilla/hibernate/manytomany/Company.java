@@ -1,16 +1,22 @@
 package com.kodilla.hibernate.com.kodilla.hibernate.manytomany;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedNativeQuery(
+/*@NamedNativeQuery(
         name = "Company.retrieveCompanyBeginWithThreeLetters",
         query = "SELECT * FROM COMPANIES WHERE LEFT (COMPANY_NAME,3) = :THREELETTERS",
        resultClass = Company.class
-)
+)*/
+@NamedQuery(
+name = "Campany.search",
+query = "SELECT * FROM COMPANY WHERE COMPANY_NAME LIKE CONCAT('%', :arg)")
 
+@Component
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
@@ -55,4 +61,5 @@ public class Company {
     private void setEmployees(List<Employee> employees) {
         this.employees = employees;
     }
+
 }

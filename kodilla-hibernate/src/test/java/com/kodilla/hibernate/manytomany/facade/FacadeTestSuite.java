@@ -1,9 +1,8 @@
-package com.kodilla.hibernate.com.kodilla.hibernate.manytomany.dao;
+package com.kodilla.hibernate.manytomany.facade;
 
 import com.kodilla.hibernate.com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.com.kodilla.hibernate.manytomany.Employee;
 import com.kodilla.hibernate.manytomany.dao.CompanyDao;
-import com.kodilla.hibernate.manytomany.dao.EmployeeDao;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,18 +10,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+
 import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CompanyDaoTestSuite {
+public class FacadeTestSuite {
+
     @Autowired
-    CompanyDao companyDao;
+    public Facade facade;
+
     @Autowired
-    EmployeeDao employeeDao;
+    public CompanyDao companyDao;
 
     @Test
-    public void testSaveManyToMany() {
+    public void testFacade() {
+
         //Given
         Employee johnSmith = new Employee("John", "Smith");
         Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
@@ -44,40 +47,16 @@ public class CompanyDaoTestSuite {
         lindaKovalsky.getCompanies().add(dataMaesters);
         lindaKovalsky.getCompanies().add(greyMatter);
 
-        //When
+    //When
         companyDao.save(softwareMachine);
         int softwareMachineId = softwareMachine.getId();
         companyDao.save(dataMaesters);
         int dataMaestersId = dataMaesters.getId();
         companyDao.save(greyMatter);
         int greyMatterId = greyMatter.getId();
-        employeeDao.save(johnSmith);
-        employeeDao.save(stephanieClarckson);
-        employeeDao.save(lindaKovalsky);
 
-         List<Employee>certainLastname = employeeDao.retrieveCertainLastname("Smith");
-        List<Company> companyBeginWithThreeLetters = companyDao.retrieveCompanyBeginWithThreeLetters("Dat");
+    List<Company> res = facade.searching("er");
 
-        //Then
-
-        Assert.assertNotEquals(0, softwareMachineId);
-        Assert.assertNotEquals(0, dataMaestersId);
-        Assert.assertNotEquals(0, greyMatterId);
-        Assert.assertEquals(1,certainLastname.size());
-        Assert.assertEquals(1, companyBeginWithThreeLetters.size());
-
-
-    //CleanUp
-        try
-    {
-        companyDao.delete(softwareMachineId);
-        companyDao.delete(dataMaestersId);
-        companyDao.delete(greyMatterId);
-    } catch(Exception e)
-
-    {
-        //do nothing
-    }
-
-    }
-}
+    //Then
+     Assert.assertEquals(2,res.size());
+}}
