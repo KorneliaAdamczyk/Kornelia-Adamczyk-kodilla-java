@@ -49,11 +49,8 @@ public class FacadeTestSuite {
 
     //When
         companyDao.save(softwareMachine);
-        int softwareMachineId = softwareMachine.getId();
         companyDao.save(dataMaesters);
-        int dataMaestersId = dataMaesters.getId();
         companyDao.save(greyMatter);
-        int greyMatterId = greyMatter.getId();
 
     List<Company> res = facade.searching("er");
 

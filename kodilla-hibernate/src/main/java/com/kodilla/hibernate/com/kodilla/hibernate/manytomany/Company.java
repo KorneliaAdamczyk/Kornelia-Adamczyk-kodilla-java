@@ -7,11 +7,11 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-/*@NamedNativeQuery(
+@NamedNativeQuery(
         name = "Company.retrieveCompanyBeginWithThreeLetters",
         query = "SELECT * FROM COMPANIES WHERE LEFT (COMPANY_NAME,3) = :THREELETTERS",
        resultClass = Company.class
-)*/
+)
 @NamedQuery(
         name = "Company.search",
         query = " SELECT c FROM Company c WHERE c.name LIKE CONCAT('%', :arg)")
