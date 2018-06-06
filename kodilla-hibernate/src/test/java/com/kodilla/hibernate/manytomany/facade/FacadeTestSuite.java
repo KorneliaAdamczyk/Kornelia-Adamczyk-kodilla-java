@@ -47,13 +47,14 @@ public class FacadeTestSuite {
         lindaKovalsky.getCompanies().add(dataMaesters);
         lindaKovalsky.getCompanies().add(greyMatter);
 
-    //When
+        //When
         companyDao.save(softwareMachine);
         companyDao.save(dataMaesters);
         companyDao.save(greyMatter);
 
-    List<Company> res = facade.searching("er");
+        List<Company> res = facade.searching("%er%");
 
-    //Then
-     Assert.assertEquals(2,res.size());
-}}
+        //Then
+        Assert.assertEquals(2, res.size());
+    }
+}
