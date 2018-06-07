@@ -14,7 +14,7 @@ import java.util.List;
 )
 @NamedQuery(
         name = "Company.search",
-        query = " SELECT c.name FROM Company c WHERE c.name LIKE CONCAT('%', :arg)")
+        query = "SELECT c.name FROM Company c WHERE c.name LIKE CONCAT('%', :arg)")
 
 @Component
 @Entity
