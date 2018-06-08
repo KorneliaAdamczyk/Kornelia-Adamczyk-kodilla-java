@@ -36,7 +36,7 @@ public class TaskListDaoTestSuite {
 
         //CleanUp
         int id = readTaskList.get(0).getId();
-        taskListDao.delete(id);
+        taskListDao.deleteById(id);
 
     }
 }

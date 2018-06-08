@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
+import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -28,11 +29,12 @@ public class TaskDaoTestSuite {
 
         //Then
         int id = task.getId();
-        Task readTask = taskDao.findOne(id);
-        Assert.assertEquals(id, readTask.getId());
+        Optional<Task> readTask = taskDao.findById(id);
+        Assert.assertTrue(readTask.isPresent());
+        Assert.assertEquals(id, readTask.get().getId());
 
         //CleanUp
-        taskDao.delete(id);
+        taskDao.deleteById(id);
     }
 
     @Test
@@ -50,6 +52,6 @@ public class TaskDaoTestSuite {
 
         //CleanUp
         int id = readTasks.get(0).getId();
-        taskDao.delete(id);
+        taskDao.deleteById(id);
     }
 }

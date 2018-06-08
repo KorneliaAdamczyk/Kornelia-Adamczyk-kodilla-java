@@ -66,7 +66,7 @@ public class InvoiceDaoTestSuite {
         Assert.assertEquals(4,saved.getItem().size());
         
         //CleanUp
-        invoiceDao.delete(saved.getId());
+        invoiceDao.deleteById(saved.getId());
     }
 
 
