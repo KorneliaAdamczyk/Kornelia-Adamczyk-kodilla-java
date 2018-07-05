@@ -5,16 +5,13 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.List;
 import java.util.Random;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
+
 
 public class CrudAppTestSuite {
     private static final String BASE_URL = "https://korneliaadamczyk.github.io";
@@ -54,11 +51,6 @@ public class CrudAppTestSuite {
         return taskName;
     }
 
-    @Test
-    public void shouldCreateCrudAppTestTask() throws InterruptedException {
-        String taskName = createCrudAppTestTask();
-    }
-
     private void sendTestTaskToTrello (String taskName) throws InterruptedException {
         driver.navigate().refresh();
 
@@ -76,12 +68,6 @@ public class CrudAppTestSuite {
         });
         Thread.sleep(5000);
         driver.switchTo().alert().accept();
-    }
-
-    @Test
-    public void shouldSendTestTaskToTrello() throws InterruptedException {
-        String taskName = createCrudAppTestTask();
-        sendTestTaskToTrello(taskName);
     }
 
     private boolean checkTaskExistsInTrello (String taskName) throws InterruptedException  {
@@ -112,19 +98,7 @@ public class CrudAppTestSuite {
         return result;
     }
 
-    @Test
-    public void shouldCheckTaskExistsInTrello() throws InterruptedException {
-        String taskName = createCrudAppTestTask();
-        sendTestTaskToTrello(taskName);
-        Assert.assertTrue(checkTaskExistsInTrello(taskName));
-    }
-
     private void deleteTask (String taskName) {
-
-        //driver.navigate().refresh();
-
-        //while (!driver.findElement(By.xpath("//select[1]")).isDisplayed()) ;
-
         driver.findElements(By.xpath("//form[@class=\"datatable__row\"]")).stream()
                 .filter(anyForm -> anyForm.findElement(By.xpath(".//p[@class=\"datatable__field-value\"]"))
                         .getText().equals(taskName))
@@ -134,9 +108,10 @@ public class CrudAppTestSuite {
     }
 
     @Test
-    public void shouldDeleteTask() throws InterruptedException {
+    public void shouldCreateCrudAppTestTask() throws InterruptedException {
         String taskName = createCrudAppTestTask();
         sendTestTaskToTrello(taskName);
+        Assert.assertTrue(checkTaskExistsInTrello(taskName));
         deleteTask(taskName);
 
     }
